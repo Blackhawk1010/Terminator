@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('background.jpg');
+}
+.navbar {
+    background-color: black;
+}
+.navbar img{
+    width: 100px;
+}
+.navbar .navbar-nav a.nav-link.active{
+    color: white;
+}
+.navbar .navbar-nav a.nav-link:hover{
+    color: #40f2ff;
+
+}
+.navbar .navbar-nav a.nav-link{
+    margin-right: 30px;
+}
+.navbar .navbar-nav{
+    margin-right: 40px;
+}
+.calculator-button{
+    border: 2px solid white ;
+    width: 40%;
+    float: right;
+    color: white;
+    margin-right: 0;
+  
+}
+.calculator-button .btn {
+    top:20%;
+}
+h3{
+    text-align: center;
+    margin-bottom: 25px;
+}
+.text{
+    font-weight: bold;
+    font-size: small;
+    text-transform: uppercase;
+}
+.inputs{
+    background-color: rgb(115, 168, 170);
+    border-radius: 5px;
+    border: 2px solid rgb(42, 63, 83);
+    padding: 10px;
+    margin-top: 2%;
+}
+.container .row .form-control{
+    text-align: left;
+}
+.container .form-group .btn{
+    margin-left: 5%;
+   
+}
+.button{
+    margin-top: 1%;
+}
+.submit-btn{
+    color: chartreuse;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

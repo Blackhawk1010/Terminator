@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a class="navbar-brand" href="#"><img src="logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav ">
+            <a class="nav-link " href="userindex.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link active" href="taxcalculator.html">Tax Calculator</a>
+             <a class="nav-link " href="taxcalculator.html">About us</a>
+              <a class="nav-link" href="taxcalculator.html">Contact</a>
+            <a class="nav-link" href="#">Logout</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container inputs">
+            <h3>Tax Calculator</h3>
+            <form>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                    <label for="natureofemployee" class="text">Nature of Employee :</label>
+                    </div>
+                    <div class="col-sm-2">
+                    <select class="form-control" id="status">
+                        <option>Married</option>
+                        <option>Unmarried</option>
+                    </select>
+                    </div>
+                  
+                </div>
+                <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="natureofemployee" class="text" >Monthly Income:</label>
+                </div>    
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" maxlength="8" required id="Income">
+                </div>
+                <div class="col-sm-2">
+                  <label for="months" class="text">No. of Months</label>
+                </div>
+                <div class="col-sm2">
+                  <input type="number" class="form-control" value="12" id="month">
+                </div>
+                <div class="col-sm-2">
+                  <label for="months" class="text">Rate:</label>
+
+                </div>
+                 <div id="res">
+                  
+                </div>
+                %
+                
+                
+                </div>    
+                <div class="form-group row">
+                  <div class="col-sm-2">
+                    <label for="bonus" class="text">Bonus : </label>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="number" class="form-control" id="bonus">
+                  </div>
+
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-2">
+                      <label for="natureofemployee" class="text" >Total Salary:</label>
+                  </div>    
+                  <div class="col-sm-3" id="tot">
+                      
+                  </div>
+                  </div>
+                  <div class="col-sm-3">
+                  <label for="months" class="text">Total Recivable Salary</label>
+                  <label id="t4"></label>
+                </div>
+               
+                   <div class="col-sm-3">
+                        <label for="bonus" class="text">taxable amount: </label>
+                        <label id="tax"></label>
+                     
+                   </div>
+            
+         
+      </div>
+      <div class="container inputs">
+        <h4>Annual Deduction</h4>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <label for="deduction" class="text">Employee Provident Fund</label>
+          </div>
+          <div class="col-sm-3" id="pf">
+         
+          </div>
+          <div class="col-sm-3">
+            <label for="deduction" class="text">Insurance</label>
+          </div>
+          <div class="col-sm-3" id="i">
+           
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <label for="deduction" class="text">Other deduction</label>
+          </div>
+          <div class="col-sm-3">
+            <input class="form-control" type="number" value="0">
+          </div>
+        </div>
+        
+    </div>
+      
+    <div class="container button">
+    <div class="form-group row">
+      <div class="col-sm-1">
+  <input class="btn btn-primary" type="reset" value="Reset">
+      </div>
+      <div class="col-sm-1 submit-btn">
+        <input class="btn btn-primary btn-success" type="button" value="Calculate" onclick="add()">
+     
+        </div>
+    </div>
+  </div>
+  
+    </form>
+      
+</div>
+</body>
+</html>
+<script >
+
+  function add(){
+     var t= document.getElementById("status").value;
+    if (t === "Married") {
+    var t= parseInt(document.getElementById("Income").value);
+      var t1= parseInt(document.getElementById("bonus").value); 
+      
+            var m1= parseInt(document.getElementById("month").value);   
+      var Total=(t*m1)+t1;
+      document.getElementById('tot').innerHTML=Total;
+      if(Total< 450000){
+        
+       var tax=(((t*m1)+t1)/100)*1;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+       var i= (t3/100)*2;
+       var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=1;
+        document.getElementById('res').innerHTML=r;
+}
+else if (Total>=450000 && Total<550000) {
+  var tax=(((t*m1)+t1)/100)*10;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=10;
+        document.getElementById('res').innerHTML=r;
+
+}
+else if (Total>=550000 && Total<750000) {
+  var tax=(((t*m1)+t1)/100)*20;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+      var t4=t3-i;
+      var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=20;
+        document.getElementById('res').innerHTML=r;
+}
+else if (Total>=750000 && Total<2000000) {
+  var tax=(((t*m1)+t1)/100)*30;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=30;
+        document.getElementById('res').innerHTML=r;
+}
+else {
+  var tax=(((t*m1)+t1)/100)*36;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=36;
+        document.getElementById('res').innerHTML=r;
+}
+}
+else{
+  var t= parseInt(document.getElementById("Income").value);
+      var t1= parseInt(document.getElementById("bonus").value); 
+      
+            var m1= parseInt(document.getElementById("month").value);   
+      var Total=(t*m1)+t1;
+      document.getElementById('tot').innerHTML=Total;
+      if(Total< 400000){
+       var tax=(((t*m1)+t1)/100)*1;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+    var t4=t3-i;
+    var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=1;
+        document.getElementById('res').innerHTML=r;
+}
+else if (Total>=400000 && Total<500000) {
+  var tax=(((t*m1)+t1)/100)*10;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=10;
+        document.getElementById('res').innerHTML=r;
+
+}
+else if (Total>=500000 && Total<700000) {
+  var tax=(((t*m1)+t1)/100)*20;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+      var t4=t3-i;
+      var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=20;
+        document.getElementById('res').innerHTML=r;
+}
+else if (Total>=700000 && Total<2000000) {
+  var tax=(((t*m1)+t1)/100)*30;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+       var t4=t3-i;
+       var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=30;
+        document.getElementById('res').innerHTML=r;
+}
+else {
+  var tax=(((t*m1)+t1)/100)*36;
+       document.getElementById('tax').innerHTML=tax;
+       var t2=Total-tax;
+       var pf= (t2/100)*10;
+       var t3=Total-tax-pf;
+         var i= (t3/100)*2;
+           var i1= i.toFixed(2);
+       var pf1= pf.toFixed(2);
+
+         document.getElementById('i').innerHTML=i1;
+       document.getElementById('pf').innerHTML=pf1;
+     var t4=t3-i;
+     var t41=t4.toFixed(2)
+  document.getElementById('t4').innerHTML=t41;
+  var r=36;
+  document.getElementById('res').innerHTML=r;
+}
+}
+}
+
+  
+</script>
